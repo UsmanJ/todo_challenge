@@ -8,4 +8,8 @@ toDoListApp.controller('toDoListController', [function() {
         "Start Todo Challenge",
     ]
   };
+
+  self.addTask = function() {
+  console.log("I just added a task :)");
+};
 }]);
