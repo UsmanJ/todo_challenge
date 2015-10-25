@@ -1,1 +1,1 @@
-var toDoListApp = angular.module('ToDoList', ['ngResource']);
+var toDoListApp = angular.module('ToDoList', ['ngResource', 'LocalStorageModule']);

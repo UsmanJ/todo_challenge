@@ -7,11 +7,12 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="js/app.js"></script>
     <script src="js/toDoListController.js"></script>
   </head>
 
-  <body ng-controller="toDoListController as listCtrl">
+  <body ng-controller="toDoListController as listCtrl" class="container">
     <div>
       <h1>To Do List</h1>
     </div>
@@ -21,14 +22,36 @@
         <button class="btn" ng-click="listCtrl.addTask()">Add Task</button>
       </form>
 
-      <ul class="list-group">
-        <li ng-repeat="task in listCtrl.result.items" ng-show="listCtrl.addTaskField">
+    </div>
+    <br>
+    <div class="nav nav-tabs">
+      <button ng-click="ctrl.setView(1)" class="btn btn-default" type="button">All</button>
+      <button ng-click="ctrl.setView(2)" class="btn btn-default" type="button">Active</button>
+      <button ng-click="ctrl.setView(3)" class="btn btn-default" type="button">Completed</button>
+      <!-- <button ng-click="ctrl.clearCompleted()" class="btn btn-default" type="button">Clear Completed</button> -->
+    </div>
+    <br>
+    <div ng-show="ctrl.taskList.length > 0">
+      Total Tasks: <span class="badge">{{ctrl.taskList.length}}</span>
+    </div>
+    <br>
+    <div>
+      <ul class="list-group-item" ng-show="ctrl.isView(1)">
+        <li ng-repeat="item in listCtrl.taskList">
+          <input ng-model="item.isCompleted" id="completeCheckbox" type="checkbox"> {{ item.taskName }}
+        </li>
       </ul>
 
-      <ul class="nav nav-tabs">
-        <li><a href="#">All</a></li>
-        <li><a href="#">Active</a></li>
-        <li><a href="#">Completed</a></li>
+      <ul class="list-group-item" ng-show="ctrl.isView(2)">
+        <ul ng-repeat="item in listCtrl.taskList | filter: { isCompleted: false }">
+          <input ng-model="item.isCompleted" id="completeCheckbox" type="checkbox"> {{ item.taskName }}
+        </ul>
+      </ul>
+
+      <ul class="list-group-item" ng-show="ctrl.isView(3)">
+        <ul ng-repeat="item in listCtrl.taskList | filter: { isCompleted: true }">
+          <input ng-model="item.isCompleted" id="completeCheckbox" type="checkbox"> {{ item.taskName }}
+        </ul>
       </ul>
     </div>
   </body>
