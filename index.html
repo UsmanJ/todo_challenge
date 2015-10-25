@@ -20,35 +20,37 @@
       <form class="form-horizontal">
         <input type="text" ng-model="listCtrl.addTaskField" placeholder="Add your task here...">
         <button class="btn" ng-click="listCtrl.addTask()">Add Task</button>
+        <button ng-click="listCtrl.clearCompleted()" class="btn btn-default" type="button">Clear Completed</button>
       </form>
-
     </div>
+
     <br>
     <div class="nav nav-tabs">
-      <button ng-click="ctrl.setView(1)" class="btn btn-default" type="button">All</button>
-      <button ng-click="ctrl.setView(2)" class="btn btn-default" type="button">Active</button>
-      <button ng-click="ctrl.setView(3)" class="btn btn-default" type="button">Completed</button>
-      <!-- <button ng-click="ctrl.clearCompleted()" class="btn btn-default" type="button">Clear Completed</button> -->
+      <button ng-click="listCtrl.setView(1)" class="btn btn-default" type="button">All</button>
+      <button ng-click="listCtrl.setView(2)" class="btn btn-default" type="button">Active</button>
+      <button ng-click="listCtrl.setView(3)" class="btn btn-default" type="button">Completed</button>
     </div>
+
     <br>
-    <div ng-show="ctrl.taskList.length > 0">
-      Total Tasks: <span class="badge">{{ctrl.taskList.length}}</span>
+    <div ng-show="listCtrl.taskList.length > 0">
+      Total Tasks: <span class="badge">{{listCtrl.taskList.length}}</span>
     </div>
+    
     <br>
     <div>
-      <ul class="list-group-item" ng-show="ctrl.isView(1)">
-        <li ng-repeat="item in listCtrl.taskList">
+      <ul class="list-group-item" ng-show="listCtrl.isView(1)">
+        <ul ng-repeat="item in listCtrl.taskList">
           <input ng-model="item.isCompleted" id="completeCheckbox" type="checkbox"> {{ item.taskName }}
-        </li>
+        </ul>
       </ul>
 
-      <ul class="list-group-item" ng-show="ctrl.isView(2)">
+      <ul class="list-group-item" ng-show="listCtrl.isView(2)">
         <ul ng-repeat="item in listCtrl.taskList | filter: { isCompleted: false }">
           <input ng-model="item.isCompleted" id="completeCheckbox" type="checkbox"> {{ item.taskName }}
         </ul>
       </ul>
 
-      <ul class="list-group-item" ng-show="ctrl.isView(3)">
+      <ul class="list-group-item" ng-show="listCtrl.isView(3)">
         <ul ng-repeat="item in listCtrl.taskList | filter: { isCompleted: true }">
           <input ng-model="item.isCompleted" id="completeCheckbox" type="checkbox"> {{ item.taskName }}
         </ul>

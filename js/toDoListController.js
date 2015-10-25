@@ -22,7 +22,7 @@ toDoListApp.controller('toDoListController', [function() {
   };
 
   self.clearCompleted = function(){
-    self.itemList = self.itemList.filter(function(item){
+    self.taskList = self.taskList.filter(function(item){
       return !item.isCompleted;
     });
   };
