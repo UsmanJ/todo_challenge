@@ -38,21 +38,21 @@
 
     <br>
     <div>
-      <ul class="list-group-item" ng-show="listCtrl.isView(1)">
-        <ul ng-repeat="item in listCtrl.taskList">
-          <input ng-model="item.isCompleted" id="completeCheckbox" type="checkbox"> {{ item.taskName }}
+      <ul class="list-group-task" ng-show="listCtrl.isView(1)">
+        <ul ng-repeat="task in listCtrl.taskList">
+          <input ng-model="task.isCompleted" id="completeCheckbox" type="checkbox"> {{ task.taskName }}
         </ul>
       </ul>
 
-      <ul class="list-group-item" ng-show="listCtrl.isView(2)">
-        <ul ng-repeat="item in listCtrl.taskList | filter: { isCompleted: false }">
-          <input ng-model="item.isCompleted" id="completeCheckbox" type="checkbox"> {{ item.taskName }}
+      <ul class="list-group-task" ng-show="listCtrl.isView(2)">
+        <ul ng-repeat="task in listCtrl.taskList | filter: { isCompleted: false }">
+          <input ng-model="task.isCompleted" id="completeCheckbox" type="checkbox"> {{ task.taskName }}
         </ul>
       </ul>
 
-      <ul class="list-group-item" ng-show="listCtrl.isView(3)">
-        <ul ng-repeat="item in listCtrl.taskList | filter: { isCompleted: true }">
-          <input ng-model="item.isCompleted" id="completeCheckbox" type="checkbox"> {{ item.taskName }}
+      <ul class="list-group-task" ng-show="listCtrl.isView(3)">
+        <ul ng-repeat="task in listCtrl.taskList | filter: { isCompleted: true }">
+          <input ng-model="task.isCompleted" id="completeCheckbox" type="checkbox"> {{ task.taskName }}
         </ul>
       </ul>
     </div>

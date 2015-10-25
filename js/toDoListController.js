@@ -6,24 +6,24 @@ toDoListApp.controller('toDoListController', [function() {
 
   self.addTask = function() {
     self.taskList.push({ taskName: self.addTaskField, completed: false });
-    self.taskItem = "";
+    self.tasktask = "";
 
     // var task = self.addTaskField;
     // var tasks = {};
-    // var existingEntries = JSON.parse(localStorage.getItem(tasks));
+    // var existingEntries = JSON.parse(localStorage.gettask(tasks));
     // if(existingEntries == null) existingEntries = [];
-    // localStorage.setItem("task", JSON.stringify(task));
+    // localStorage.settask("task", JSON.stringify(task));
     // existingEntries.push(task);
-    // localStorage.setItem(tasks, JSON.stringify(existingEntries));
+    // localStorage.settask(tasks, JSON.stringify(existingEntries));
   };
 
-  self.toggleCompletion = function(item) {
-    return item.completed ? item.completed = false : item.completed = true
+  self.toggleCompletion = function(task) {
+    return task.completed ? task.completed = false : task.completed = true
   };
 
   self.clearCompleted = function(){
-    self.taskList = self.taskList.filter(function(item){
-      return !item.isCompleted;
+    self.taskList = self.taskList.filter(function(task){
+      return !task.isCompleted;
     });
   };
 
